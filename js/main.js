@@ -1,7 +1,9 @@
 const main = async (address) => {
-  const transactions = await getTransactions(address);
-  console.log(transactions.result);
-  if (!transactions || transactions.status !== "1") {
+  console.log("start");
+  const transactions = await fetchTransactions(address);
+  console.log("end");
+  console.log(transactions);
+  if (!transactions) {
     $("#fees_box").html(
       "<p>Oops we can't fetch the data. Please try again or retry later.</p>"
     );
@@ -9,13 +11,12 @@ const main = async (address) => {
   }
   let total_fees = 0;
   let total_fees_failed = { number: 0, gas: 0 };
-  transactions.result.forEach((el) => {
+  transactions.forEach((el) => {
     // if (el.gasPrice < 10 ** 12) {
     //   total_fees += (el.gasPrice * el.gasUsed) / 1e18;
     // }
     total_fees += (el.gasPrice * el.gasUsed) / 1e18;
     if (el.isError === "1") {
-      console.log(el);
       total_fees_failed.number++;
       total_fees_failed.gas += (el.gasPrice * el.gasUsed) / 1e18;
     }
@@ -25,7 +26,7 @@ const main = async (address) => {
   // await fillWalletTable(address)
   $(".total_fees").html(
     ` <b>${total_fees.toFixed(2)} AVAX</b> for ${
-      transactions.result.length
+      transactions.length
     } transactions - <b>$${(total_fees * avax_price).toFixed(2)}*</b>`
   );
   $(".total_failed").html(
@@ -43,13 +44,6 @@ window.addEventListener("load", async () => {
   $(".infos_topic").html(
     '<h2>fetching tokens<span class="loading"></span></h2>'
   );
-  /*
-    ARC20TOKENS = await getARC20Tokens();
-    if (!ARC20TOKENS || ARC20TOKENS.error) {
-        console.log('error fatal')
-        $(".infos_topic").html('<h2>FATAL ERROR: we can\'t retrieve tokens from Covalent API :(</h2>')
-        return
-    }*/
   $(".infos_topic").html(
     '<h2>Connecting to Metamask<span class="loading"></span></h2>'
   );
@@ -67,7 +61,7 @@ window.addEventListener("load", async () => {
       address = addresses[0];
     } else {
       $(".infos_topic").html(
-        '<h2>Oops you need to install <a target="_blank" href="https://metamask.io/">MetaMask</a> before!</h2><br><p>Or add an argument in the url like that: ?a=YOUR_ADDRESS</p>'
+        "<h2>Oops you need to install web3 wallet before!</h2><br><p>Or add an argument in the url like that: ?a=YOUR_ADDRESS</p>"
       );
       $(".address_section").html(
         '<br/><p>you can try an example <a href="https://0xarkin.github.io/avax-fees/?a=0xC35D1124f56EEbf9E727C04fc678191D02df9A09">here</a> (random address)</p>'

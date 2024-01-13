@@ -1,9 +1,34 @@
-const getTransactions = async (address, chainid = 43114) => {
-  return await fetch(
-    `https://api.routescan.io/v2/network/mainnet/evm/${chainid}/etherscan/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=10000&sort=asc&apikey=YourApiKeyToken`
-  )
-    .then((res) => res.json())
-    .catch((err) => null);
+const fetchTransactions = async (address, chainid = 43114, page = 1) => {
+  const offset = 10000 / page;
+  const apiUrl = `https://api.routescan.io/v2/network/mainnet/evm/${chainid}/etherscan/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=${page}&offset=${offset}&sort=asc&apikey=YourApiKeyToken`;
+
+  try {
+    const response = await fetch(apiUrl)
+      .then((res) => res.json())
+      .catch((err) => null);
+
+    if (!response || response.status !== "1") {
+      console.log("error on fetch txs", response);
+      return [];
+    }
+    const transactions = response.result;
+
+    // If there are more transactions, recursively fetch the next page
+    if (transactions.length === offset) {
+      const nextPageTransactions = await fetchTransactions(
+        address,
+        chainid,
+        page + 1
+      )
+        .then((res) => res)
+        .catch((err) => null);
+      return transactions.concat(nextPageTransactions);
+    }
+    return transactions;
+  } catch (error) {
+    console.error("Error fetching transactions:", error.message);
+    throw error;
+  }
 };
 
 const getTokenPrice = async (tokenId) => {

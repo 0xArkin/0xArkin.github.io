@@ -33,28 +33,8 @@
               />
               <h3 style="display: inline-block">AVAX C-Chain Fees</h3>
             </a>
-            <p>Discover your fees</p>
+            <p>Discover your Avalanche C-Chain fees</p>
           </div>
-
-          <!-- <div class="social-buttons">
-            <p>Share the app</p>
-            <div class="share">
-              <a
-                href="http://twitter.com/share?text=Hey, do you know how much you pay fees on Avalanche?&url=https://0xarkin.github.io/avax-fees&hashtags=Avalanche,AVAX"
-                target="_blank"
-                ><img src="assets/twitter_16.png" alt="twitter"
-              /></a>
-              <a href="https://t.me/avalancheavax" target="_blank"
-                ><img src="assets/telegram_16.png" alt="telegram"
-              /></a>
-              <a href="https://chat.avax.network/" target="_blank"
-                ><img src="assets/discord_16.png" alt="discord"
-              /></a>
-              <a href="https://github.com/qsvtr/qsvtr.github.io" target="_blank"
-                ><img src="assets/github_16.png" alt="github"
-              /></a>
-            </div>
-          </div> -->
         </div>
       </header>
 
@@ -66,30 +46,14 @@
 
           <section class="address_section"></section>
 
-          <!-- menu section -->
-          <!--
-            <section class="menu_topic" style="display:none">
-                <section class="showcase">
-                    <section class="nes-container with-title" style="text-align: center">
-                        <h1 class="title">Menu</h1>
-                        <button onclick="onClickMenu('fees_topic')" type="button" class="nes-btn is-primary">fees</button>
-                        <button onclick="onClickMenu('transactions_topic')" type="button" class="nes-btn is-primary">transactions</button>
-                        <button onclick="onClickMenu('wallet_topic')" type="button" class="nes-btn is-primary">wallet</button>
-                        <button onclick="onClickMenu('roadmap_topic')" type="button" class="nes-btn is-primary">roadmap</button>
-                        <button onclick="onClickMenu('tipme_topic')" type="button" class="nes-btn is-primary">tip me</button>
-                    </section>
-                </section>
-            </section>
-            -->
-
-          <!-- fees section -->
           <section class="fees_topic" style="display: none">
             <section class="showcase">
               <section class="nes-container with-title">
                 <h1 class="title">Fees</h1>
                 <section class="loading">Loading</section>
                 <section class="warning_loading">
-                  if it takes too long, please refresh
+                  The snowtrace API is slow, please be patient especially if you
+                  have a lot of transactions (> 5000)
                 </section>
                 <section
                   id="fees_box"
@@ -101,170 +65,7 @@
                   </div>
                   <br />
                   <p>* at current price: <span class="price"></span></p>
-                  <!-- <span id="download"></span> -->
                 </section>
-              </section>
-            </section>
-          </section>
-
-          <!-- transactions section -->
-          <section class="transactions_topic" style="display: none">
-            <section class="showcase">
-              <section class="nes-container with-title">
-                <h1 class="title">Transactions</h1>
-                <!--<a href="#" class="nes-badge" style="width: 15em"><span class="is-primary">in development</span></a>-->
-                <section class="loading">Loading</section>
-                <div id="tables" class="item">
-                  <div class="nes-table-responsive">
-                    <table
-                      class="nes-table is-bordered is-centered"
-                      style="width: 99%; table-layout: auto"
-                    >
-                      <thead>
-                        <tr>
-                          <th>type</th>
-                          <th>token amount</th>
-                          <th>token amount</th>
-                          <th>time</th>
-                          <th>dex</th>
-                          <th>fees</th>
-                        </tr>
-                      </thead>
-                      <tbody class="transaction_table"></tbody>
-                    </table>
-                    <br />
-                    <!--<span class="nes-text is-warning">the prices of tokens not listed on Coingecko can't be displayed.</span>-->
-                  </div>
-                </div>
-              </section>
-            </section>
-          </section>
-
-          <!-- wallet section -->
-          <section class="wallet_topic" style="display: none">
-            <section class="showcase">
-              <section class="nes-container with-title">
-                <h1 class="title">Wallet</h1>
-                <a href="#" class="nes-badge" style="width: 15em"
-                  ><span class="is-primary">in development</span></a
-                >
-                <!--
-                        <p>list of your tokens (need to be listed on Coingecko to get the price?)</p>
-                        <section class="loading">Loading</section>
-                        <div class="item">
-                            <div class="nes-table-responsive">
-                                <table class="nes-table is-bordered is-centered" style="width: 99%; table-layout: auto;">
-                                    <thead>
-                                    <tr>
-                                        <th>logo</th>
-                                        <th>token ticker</th>
-                                        <th>quantity</th>
-                                        <th>price unity</th>
-                                        <th>total</th>
-                                        <th>contract</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody class="wallet_table">
-                                    </tbody>
-                                </table>
-                                <br/>
-                            </div>
-                        </div> -->
-              </section>
-            </section>
-          </section>
-
-          <!-- roadmap section -->
-          <section class="roadmap_topic" style="display: none">
-            <section class="showcase">
-              <section class="nes-container with-title">
-                <h1 class="title">Roadmap</h1>
-                <div class="lists">
-                  <label class="checkbox">
-                    <input
-                      disabled
-                      type="checkbox"
-                      class="nes-checkbox"
-                      checked
-                    />
-                    <span>setting up the website structure</span> </label
-                  ><br />
-                  <label>
-                    <input
-                      disabled
-                      type="checkbox"
-                      class="nes-checkbox"
-                      checked
-                    />
-                    <span>display fees for an address</span> </label
-                  ><br />
-                  <label>
-                    <input
-                      disabled
-                      type="checkbox"
-                      class="nes-checkbox"
-                      checked
-                    />
-                    <span>response view (need feedback)</span> </label
-                  ><br />
-                  <label>
-                    <input
-                      disabled
-                      type="checkbox"
-                      class="nes-checkbox"
-                      checked
-                    />
-                    <span>add list of transactions</span> </label
-                  ><br />
-                  <label>
-                    <input disabled type="checkbox" class="nes-checkbox" />
-                    <span>add list of tokens</span> </label
-                  ><br />
-                  <label>
-                    <input disabled type="checkbox" class="nes-checkbox" />
-                    <span
-                      >add functionalities in the transactions table (sort by
-                      type, date, etc.)</span
-                    > </label
-                  ><br />
-                  <label>
-                    <input disabled type="checkbox" class="nes-checkbox" />
-                    <span
-                      >add button to connect on metamask or by url</span
-                    > </label
-                  ><br />
-                  <label>
-                    <input disabled type="checkbox" class="nes-checkbox" />
-                    <span>add try catch to avoid stuck</span> </label
-                  ><br />
-                  <label>
-                    <input disabled type="checkbox" class="nes-checkbox" />
-                    <span>dark mode (not sure and very low priority)</span>
-                  </label>
-                </div>
-              </section>
-            </section>
-          </section>
-
-          <!-- Tip me section -->
-          <section class="tipme_topic" style="display: none">
-            <section class="showcase">
-              <section class="nes-container with-title">
-                <h1 class="title">Tip me</h1>
-                <div class="nes-container with-title is-centered">
-                  <p class="title">X Chain</p>
-                  <p>X-avax1je9jmf7cggy3gafkn52mrz3qg509rynrhfzkpy</p>
-                </div>
-                <br />
-                <div class="nes-container with-title is-centered">
-                  <p class="title">C Chain</p>
-                  <p>0xe35c047764766f3c51bc4a52e7262e64c72e22e8</p>
-                </div>
-                <br />
-                <p>
-                  free to dm after a tip on
-                  <a href="https://t.me/qsvtr">Telegram</a> :)
-                </p>
               </section>
             </section>
           </section>
@@ -276,7 +77,6 @@
     <script type="text/javascript" src="js/api.js"></script>
     <script type="text/javascript" src="js/utils.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
-    <!--<script src="js/web3.min.js"></script>-->
   </body>
   <footer>
     <p>
