@@ -38,8 +38,10 @@ const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 const currentTheme = localStorage.getItem("theme");
 if (currentTheme === "dark") {
     document.body.classList.toggle("dark-theme");
+    $(".btn-toggle").html("light");
 } else if (currentTheme === "light") {
     document.body.classList.toggle("light-theme");
+    $(".btn-toggle").html("dark");
 }
 btn.addEventListener("click", function () {
     let theme = ''

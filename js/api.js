@@ -1,7 +1,7 @@
 const fetchTransactions = async (address, chainid = 43114, page = 1) => {
   const offset = 10000 / page;
   const apiUrl = `https://api.routescan.io/v2/network/mainnet/evm/${chainid}/etherscan/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=${page}&offset=${offset}&sort=asc&apikey=YourApiKeyToken`;
-
+  console.log("fetching transactions", apiUrl);
   try {
     const response = await fetch(apiUrl)
       .then((res) => res.json())

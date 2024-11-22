@@ -1,3 +1,5 @@
+const ATH_PRICE = 146.22; // source: https://coinmarketcap.com/fr/currencies/avalanche/#Analytics
+
 const main = async (address) => {
   console.log("start");
   const transactions = await fetchTransactions(address);
@@ -37,6 +39,9 @@ const main = async (address) => {
   $(".price").html(` $${avax_price}`);
   $("#download").html(
     '<button type="button" class="nes-btn is-primary" onclick="onDownload()">Download my transaction history</button>'
+  );
+  $(".ath_price").html(
+    ` ($${ATH_PRICE}): $${(total_fees * ATH_PRICE).toFixed(2)}`
   );
 };
 
